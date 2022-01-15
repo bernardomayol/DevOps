@@ -1,0 +1,16 @@
+test.yaml
+name: Bootcamp 
+
+on: push
+
+jobs: 
+    job1:
+        name: First job
+        runs-on: ubuntu-latest
+        steps:
+        - name: Step One
+          uses: actions/checkout@v2
+        -name: Step two
+          run: | 
+          env | sort
+          touch {{ secrets.MY_FILE_NAME }}
