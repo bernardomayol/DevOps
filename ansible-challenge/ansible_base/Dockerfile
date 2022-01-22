@@ -19,8 +19,7 @@ RUN useradd -rm -d /home/ansible_controller -s /bin/bash -g root -G sudo -u 1001
 RUN echo ansible_controller:12345 | chpasswd
 RUN echo "ansible_controller ALL=(ALL:ALL) NOPASSWD: ALL" |  EDITOR="tee -a"  visudo
 
-
 RUN mkdir -p /home/ansible_controller/.ssh
 
-
+RUN service ssh start
 CMD ["/bin/bash", "/home/ansible_controller/startup.sh"]
