@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [17.x]
+        node-version: [17.0.2]
     steps:
     - name: Pull context hello app 
       uses: actions/checkout@v2
@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [17.x]
+        node-version: [17.0.2]
     steps:
     - name: Pull context hello app
       uses: actions/checkout@v2
