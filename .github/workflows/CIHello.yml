@@ -45,4 +45,4 @@ jobs:
         cache: 'npm'
 
     - name: Build the image
-        run: docker build -t node_hello_app .
+      run: docker build -t node_hello_app .
