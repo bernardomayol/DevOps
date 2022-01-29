@@ -28,7 +28,7 @@ jobs:
     - run: npm run test
 
   job_build:
-    needs: test
+    needs: job_test
     if: success()
     name: Build app_hello' container
     runs-on: ubuntu-latest
