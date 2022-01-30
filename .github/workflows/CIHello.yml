@@ -6,6 +6,7 @@ on:
   pull_request:
     branches: [ main ]
 
+
 jobs:
 
   job_test:
@@ -15,18 +16,17 @@ jobs:
       matrix:
         node-version: [17.x]
     steps:
-      - run: echo $GITHUB_WORKSPACE
-    # - name: Pull context hello app 
-    #   uses: actions/checkout@v2
-    # - name: Use Node.js ${{ matrix.node-version }}
-    #   uses: actions/setup-node@v2
-    #   with:
-    #     node-version: ${{ matrix.node-version }}
-    #     cache: 'npm'
-    #   env:
-    #     CI: true
-    # - run: npm install
-    # - run: npm run test
+    - name: Pull context hello app 
+      uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+      env:
+        CI: true
+    - run: npm install
+    - run: npm run test
 
   job_build:
     needs: job_test
