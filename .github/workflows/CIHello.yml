@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  GITHUB_WORKSPACE = $GITHUB_WORKSPACE/capstone_project/hello-world
+  GITHUB_WORKSPACE: $GITHUB_WORKSPACE/capstone_project/hello-world
 
 jobs:
 
