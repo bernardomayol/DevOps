@@ -32,6 +32,9 @@ jobs:
     if: success()
     name: Build app_hello' container
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./capstone_project/hello-world
     strategy:
       matrix:
         node-version: [17.x]
@@ -42,7 +45,6 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
 
     - name: Build the image
       run: docker build -t node_hello_app .
