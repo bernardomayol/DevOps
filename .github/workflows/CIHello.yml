@@ -7,12 +7,13 @@ on:
     branches: [ main ]
 
 jobs:
-  defaults:
-    run:
-      working-directory: ./capstone_project/hello-world
+  
   job_test:
     name: Test hello app
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./capstone_project/hello-world
     strategy:
       matrix:
         node-version: [17.x]
