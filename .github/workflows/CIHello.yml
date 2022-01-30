@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  GITHUB_WORKSPACE = $GITHUB_WORKSPACE/capstone_project/hello-world
 
 jobs:
 
