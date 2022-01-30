@@ -1,4 +1,4 @@
-name: Node Hello CI Workflow
+name: Hello App CI
 
 on:
   push:
