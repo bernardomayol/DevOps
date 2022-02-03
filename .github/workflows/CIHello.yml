@@ -45,6 +45,7 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
+        cache: 'npm'
 
     - name: Build the image
       run: docker build -t node_hello_app .

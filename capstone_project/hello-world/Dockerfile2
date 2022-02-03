@@ -1,0 +1,37 @@
+FROM ubuntu
+
+RUN apt-get update  -y \
+    && apt-get upgrade -y \ 
+    && apt-get install -y \
+    ssh \
+    sshpass \
+    sudo \
+    software-properties-common \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+
+#RUN add-apt-repository --yes --update ppa:ansible/ansible \
+   # && apt-get install -y ansible
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+RUN echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+RUN apt-get update && apt-get install -y docker-ce=5:20.10.12~3-0~ubuntu-focal docker-ce-cli=5:20.10.12~3-0~ubuntu-focal containerd.io
+
+#RUN sudo chown [username]:docker /var/run/docker.sock
+
+WORKDIR /app
+
+COPY . .
+
+RUN useradd -rm -d /app -s /bin/bash -g root -G sudo -u 1001 ansible_controller
+RUN echo ansible_controller:12345 | chpasswd
+RUN echo "ansible_controller ALL=(ALL:ALL) NOPASSWD: ALL" |  EDITOR="tee -a"  visudo
+
+RUN mkdir -p /app/.ssh
+
+CMD ["/bin/bash", "/app/ansible_base/startup.sh"]
