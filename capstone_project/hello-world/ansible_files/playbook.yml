@@ -9,8 +9,3 @@
           regexp: "Hello World!" 
           # The String to Replace
           line: "Hello DevOps!"
-      #command: pwd
-      #cat src/App.js | sed 's/Hello World!/Hello DevOps!/'
-    #- name: Verify file modified
-      #command: cat src/App.js
-
